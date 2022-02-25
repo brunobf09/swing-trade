@@ -6,7 +6,7 @@ from swing_trade import search
 app = Flask(__name__)
 
 def swing_trade():
-    carteira = pd.read_csv("https://www.dropbox.com/s/juhwwtpgml3xtrw/B3.csv?dl=1")
+    carteira = pd.read_csv("https://www.dropbox.com/s/q868xp7ibhk8mij/B3%20-%20b3.csv?dl=1")
     romp = []
     ini = []
     for stock in carteira.Stock:
