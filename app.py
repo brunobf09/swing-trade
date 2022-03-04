@@ -20,17 +20,21 @@ def swing_trade():
                 pass
 
             if len(romp) == 0:
-                op_romp = "Não Houve Operações de Rompimento."
+                op_romp = "n\Não Houve Operações de Rompimento.n\"
             if len(ini) == 0:
-                op_ini = "Não há Operações Correntes."
+                op_ini = "n\Não há Operações Correntes.n\"
             if len(romp) > 0:
                 op_romp = pd.concat(romp)
             if len(ini) > 0:
                 op_ini = pd.concat(ini)
         except:
             pass
-    if type(op_romp)==str:
-        return op_romp,op_ini.to_html()
+    if type(op_romp)==str and type(op_ini)!=str :
+        return op_romp, op_ini.to_html()
+    elif type(op_romp)!=str and type(op_ini)==str:
+        return op_romp.to_html(), op_ini
+    elif type(op_romp)!=str and type(op_ini)!=str:
+        return op_romp,op_ini
     else:
         return op_romp.to_html(), op_ini.to_html()
 
