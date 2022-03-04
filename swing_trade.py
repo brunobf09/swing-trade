@@ -4,18 +4,14 @@ import yfinance as yf
 
 def search(stock):
   for stocks in [stock]:
-    wk = yf.Ticker(stocks).history(period="max", interval="1wk")
     day = yf.Ticker(stocks).history(period="max", interval="1d")
-    min = yf.Ticker(stocks).history(period="2y", interval="60m")
-    moving_average_window = 72
-  for na in [wk,day,min]:
+  for na in [day]:
     na.dropna(axis=0, inplace=True)
-    na['ma72'] = na["Close"].rolling(window=moving_average_window).mean()
     na['mal'] = na["Close"].rolling(window=34).quantile(0.025)
     na['mah'] = na["Close"].rolling(window=34).quantile(0.975)
 
   day["sinal"] = 0
-  df = day[["Close","ma72","mal","mah","sinal"]]
+  df = day[["Close","mal","mah","sinal"]]
   df.dropna(axis=0,inplace=True)
   sinal = []
   for i in range(df.shape[0]):
