@@ -29,7 +29,10 @@ def swing_trade():
                 op_ini = pd.concat(ini)
         except:
             pass
-    return op_romp.to_html(), op_ini.to_html()
+    if type(op_romp)==str:
+        return op_romp,op_ini.to_html()
+    else:
+        return op_romp.to_html(), op_ini.to_html()
 
 @app.route('/')
 def index():
