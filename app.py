@@ -20,9 +20,9 @@ def swing_trade():
                 pass
 
             if len(romp) == 0:
-                op_romp = "n\Não Houve Operações de Rompimento.n\"
+                op_romp = "\n Não Houve Operações de Rompimento.\n"
             if len(ini) == 0:
-                op_ini = "n\Não há Operações Correntes.n\"
+                op_ini = "\n Não há Operações Correntes.\n"
             if len(romp) > 0:
                 op_romp = pd.concat(romp)
             if len(ini) > 0:
